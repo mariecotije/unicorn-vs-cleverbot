@@ -1,25 +1,17 @@
 //this file imports everything together
-import { greetUser } from "./function";
-import { conversation } from "./data";
+import { prepareMessageHtml } from "./function";
+import { conversation_json } from "./data";
 
 //1 parse json
-//const chat = JSON.parse(conversation_json);
+const chat = JSON.parse(conversation_json);
 
 //2 target element in HTML
 const conversationElement = document.querySelector(".conversation");
 
 //3 iteration
-conversation.forEach((message, index) => {
-
+chat.forEach((message, index) => {
     //4 set timeout
     setTimeout(() => {
-        conversationElement.innerHTML +=
-            `<div class="message message--${message.side}">
-        <div class="message__text">
-            ${message.text}
-        </div>
-    </div>`
+        conversationElement.innerHTML += prepareMessageHtml(message)
     }, 1000 * index);
 });
-
-greetUser();

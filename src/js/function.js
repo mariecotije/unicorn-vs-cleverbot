@@ -1,5 +1,11 @@
 //exports functions
 
-export const greetUser = () => {
-    console.log('Hi there!');
+export const prepareMessageHtml = (message) => {
+    return `
+    <div class="message message--${message.side}" >
+        <div class="message__text">
+            ${message.text}
+        </div>
+    </div>
+    `
 };
